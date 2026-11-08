@@ -1,0 +1,671 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 8,
+    "identityHash": "c1a8bd5df31ed59309abc422f0b133f1",
+    "entities": [
+      {
+        "tableName": "favorite",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`speciesId` INTEGER NOT NULL, `addedAt` INTEGER NOT NULL, PRIMARY KEY(`speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "addedAt",
+            "columnName": "addedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "caught",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`game` TEXT NOT NULL, `speciesId` INTEGER NOT NULL, `caughtAt` INTEGER NOT NULL, PRIMARY KEY(`game`, `speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caughtAt",
+            "columnName": "caughtAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "game",
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "species_asset",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`speciesId` INTEGER NOT NULL, `artworkUrl` TEXT, `spriteUrl` TEXT, `fetchedAt` INTEGER NOT NULL, PRIMARY KEY(`speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "artworkUrl",
+            "columnName": "artworkUrl",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "spriteUrl",
+            "columnName": "spriteUrl",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "fetchedAt",
+            "columnName": "fetchedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "shiny",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`game` TEXT NOT NULL, `speciesId` INTEGER NOT NULL, `caughtAt` INTEGER NOT NULL, PRIMARY KEY(`game`, `speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caughtAt",
+            "columnName": "caughtAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "game",
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "team",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `game` TEXT NOT NULL, `updatedAt` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updatedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "team_member",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`teamId` INTEGER NOT NULL, `slot` INTEGER NOT NULL, `speciesId` INTEGER NOT NULL, `formId` INTEGER NOT NULL, `moves` TEXT NOT NULL, PRIMARY KEY(`teamId`, `slot`))",
+        "fields": [
+          {
+            "fieldPath": "teamId",
+            "columnName": "teamId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "slot",
+            "columnName": "slot",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "formId",
+            "columnName": "formId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "moves",
+            "columnName": "moves",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "teamId",
+            "slot"
+          ]
+        }
+      },
+      {
+        "tableName": "catch_list",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `game` TEXT NOT NULL, `goal` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `nationalDex` INTEGER NOT NULL DEFAULT 0)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goal",
+            "columnName": "goal",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nationalDex",
+            "columnName": "nationalDex",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "game_copy",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `game` TEXT NOT NULL, `label` TEXT NOT NULL, `playerName` TEXT NOT NULL, `trainerId` TEXT NOT NULL, `language` TEXT, `platform` TEXT NOT NULL, `nationalDex` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "label",
+            "columnName": "label",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "playerName",
+            "columnName": "playerName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "trainerId",
+            "columnName": "trainerId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "language",
+            "columnName": "language",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "platform",
+            "columnName": "platform",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nationalDex",
+            "columnName": "nationalDex",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "shiny_hunt",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `game` TEXT NOT NULL, `speciesId` INTEGER NOT NULL, `formId` INTEGER NOT NULL, `method` TEXT NOT NULL, `shinyCharm` INTEGER NOT NULL, `count` INTEGER NOT NULL, `startedAt` INTEGER NOT NULL, `foundAt` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "formId",
+            "columnName": "formId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "method",
+            "columnName": "method",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shinyCharm",
+            "columnName": "shinyCharm",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "count",
+            "columnName": "count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startedAt",
+            "columnName": "startedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foundAt",
+            "columnName": "foundAt",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "save_import",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`copyId` INTEGER NOT NULL, `importedAt` INTEGER NOT NULL, `fileName` TEXT NOT NULL, `playMinutes` INTEGER NOT NULL, `boxNames` TEXT NOT NULL, `badges` INTEGER, `startedAt` INTEGER, PRIMARY KEY(`copyId`))",
+        "fields": [
+          {
+            "fieldPath": "copyId",
+            "columnName": "copyId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "importedAt",
+            "columnName": "importedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fileName",
+            "columnName": "fileName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "playMinutes",
+            "columnName": "playMinutes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "boxNames",
+            "columnName": "boxNames",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "badges",
+            "columnName": "badges",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "startedAt",
+            "columnName": "startedAt",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "copyId"
+          ]
+        }
+      },
+      {
+        "tableName": "save_pokemon",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`copyId` INTEGER NOT NULL, `box` INTEGER NOT NULL, `slot` INTEGER NOT NULL, `speciesId` INTEGER NOT NULL, `nickname` TEXT NOT NULL, `otName` TEXT NOT NULL, `otId` INTEGER NOT NULL, `ownCatch` INTEGER NOT NULL, `pid` INTEGER NOT NULL, `exp` INTEGER NOT NULL, `heldItem` INTEGER NOT NULL, `friendship` INTEGER NOT NULL, `moves` TEXT NOT NULL, `ivs` TEXT NOT NULL, `evs` TEXT NOT NULL, `metLevel` INTEGER NOT NULL, `metLocation` INTEGER NOT NULL, `originGame` INTEGER NOT NULL, `ball` INTEGER NOT NULL, `egg` INTEGER NOT NULL, `abilitySlot` INTEGER NOT NULL, `shiny` INTEGER NOT NULL, `language` INTEGER NOT NULL, `metDate` INTEGER NOT NULL DEFAULT 0, `metTime` INTEGER NOT NULL DEFAULT 0, `form` INTEGER NOT NULL DEFAULT 0, `gender` INTEGER NOT NULL DEFAULT -1, `nature` INTEGER NOT NULL DEFAULT -1, PRIMARY KEY(`copyId`, `box`, `slot`))",
+        "fields": [
+          {
+            "fieldPath": "copyId",
+            "columnName": "copyId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "box",
+            "columnName": "box",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "slot",
+            "columnName": "slot",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nickname",
+            "columnName": "nickname",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "otName",
+            "columnName": "otName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "otId",
+            "columnName": "otId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ownCatch",
+            "columnName": "ownCatch",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pid",
+            "columnName": "pid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exp",
+            "columnName": "exp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heldItem",
+            "columnName": "heldItem",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "friendship",
+            "columnName": "friendship",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "moves",
+            "columnName": "moves",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ivs",
+            "columnName": "ivs",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "evs",
+            "columnName": "evs",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "metLevel",
+            "columnName": "metLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "metLocation",
+            "columnName": "metLocation",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "originGame",
+            "columnName": "originGame",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ball",
+            "columnName": "ball",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "egg",
+            "columnName": "egg",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "abilitySlot",
+            "columnName": "abilitySlot",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shiny",
+            "columnName": "shiny",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "language",
+            "columnName": "language",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "metDate",
+            "columnName": "metDate",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "metTime",
+            "columnName": "metTime",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "form",
+            "columnName": "form",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "-1"
+          },
+          {
+            "fieldPath": "nature",
+            "columnName": "nature",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "-1"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "copyId",
+            "box",
+            "slot"
+          ]
+        }
+      },
+      {
+        "tableName": "save_link",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`copyId` INTEGER NOT NULL, `uri` TEXT NOT NULL, `fileName` TEXT NOT NULL, `contentCrc` INTEGER NOT NULL, `problem` TEXT, PRIMARY KEY(`copyId`))",
+        "fields": [
+          {
+            "fieldPath": "copyId",
+            "columnName": "copyId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uri",
+            "columnName": "uri",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fileName",
+            "columnName": "fileName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contentCrc",
+            "columnName": "contentCrc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "problem",
+            "columnName": "problem",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "copyId"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c1a8bd5df31ed59309abc422f0b133f1')"
+    ]
+  }
+}

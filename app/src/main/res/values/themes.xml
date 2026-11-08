@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.OpenDataDex" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+    <color name="window_background">#FFF5F7FA</color>
+    <color name="ic_launcher_background">#FFE3350D</color>
+</resources>

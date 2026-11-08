@@ -1,0 +1,254 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "3e8b2f9ca156e84a2d2c097bac278972",
+    "entities": [
+      {
+        "tableName": "favorite",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`speciesId` INTEGER NOT NULL, `addedAt` INTEGER NOT NULL, PRIMARY KEY(`speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "addedAt",
+            "columnName": "addedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "caught",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`game` TEXT NOT NULL, `speciesId` INTEGER NOT NULL, `caughtAt` INTEGER NOT NULL, PRIMARY KEY(`game`, `speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caughtAt",
+            "columnName": "caughtAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "game",
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "species_asset",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`speciesId` INTEGER NOT NULL, `artworkUrl` TEXT, `spriteUrl` TEXT, `fetchedAt` INTEGER NOT NULL, PRIMARY KEY(`speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "artworkUrl",
+            "columnName": "artworkUrl",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "spriteUrl",
+            "columnName": "spriteUrl",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "fetchedAt",
+            "columnName": "fetchedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "shiny",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`game` TEXT NOT NULL, `speciesId` INTEGER NOT NULL, `caughtAt` INTEGER NOT NULL, PRIMARY KEY(`game`, `speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caughtAt",
+            "columnName": "caughtAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "game",
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "team",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `game` TEXT NOT NULL, `updatedAt` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updatedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "team_member",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`teamId` INTEGER NOT NULL, `slot` INTEGER NOT NULL, `speciesId` INTEGER NOT NULL, `formId` INTEGER NOT NULL, `moves` TEXT NOT NULL, PRIMARY KEY(`teamId`, `slot`))",
+        "fields": [
+          {
+            "fieldPath": "teamId",
+            "columnName": "teamId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "slot",
+            "columnName": "slot",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "formId",
+            "columnName": "formId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "moves",
+            "columnName": "moves",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "teamId",
+            "slot"
+          ]
+        }
+      },
+      {
+        "tableName": "catch_list",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `game` TEXT NOT NULL, `goal` TEXT NOT NULL, `createdAt` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goal",
+            "columnName": "goal",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3e8b2f9ca156e84a2d2c097bac278972')"
+    ]
+  }
+}

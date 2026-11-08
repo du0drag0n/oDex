@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Whether generations are written with digits ("第4世代") rather than Roman numerals. -->
+    <bool name="generation_digits">false</bool>
+</resources>

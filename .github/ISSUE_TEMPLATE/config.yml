@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Wrong or missing game data
+    url: https://github.com/du0drag0n/oDex/issues/new?template=bug_report.md&title=Data%3A%20
+    about: Stats, moves, locations and text come from the openDex API; report what's wrong here and it will be fixed there.

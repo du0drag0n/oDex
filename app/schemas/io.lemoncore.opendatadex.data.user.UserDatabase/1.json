@@ -1,0 +1,102 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "526a709f406cfc8f32287534014a075e",
+    "entities": [
+      {
+        "tableName": "favorite",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`speciesId` INTEGER NOT NULL, `addedAt` INTEGER NOT NULL, PRIMARY KEY(`speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "addedAt",
+            "columnName": "addedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "caught",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`game` TEXT NOT NULL, `speciesId` INTEGER NOT NULL, `caughtAt` INTEGER NOT NULL, PRIMARY KEY(`game`, `speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "game",
+            "columnName": "game",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caughtAt",
+            "columnName": "caughtAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "game",
+            "speciesId"
+          ]
+        }
+      },
+      {
+        "tableName": "species_asset",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`speciesId` INTEGER NOT NULL, `artworkUrl` TEXT, `spriteUrl` TEXT, `fetchedAt` INTEGER NOT NULL, PRIMARY KEY(`speciesId`))",
+        "fields": [
+          {
+            "fieldPath": "speciesId",
+            "columnName": "speciesId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "artworkUrl",
+            "columnName": "artworkUrl",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "spriteUrl",
+            "columnName": "spriteUrl",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "fetchedAt",
+            "columnName": "fetchedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "speciesId"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '526a709f406cfc8f32287534014a075e')"
+    ]
+  }
+}

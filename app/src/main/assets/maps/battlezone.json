@@ -1,0 +1,31 @@
+{
+  "region": "battlezone",
+  "name": "Battle Zone",
+  "games": ["diamond", "pearl", "platinum", "brilliant-diamond", "shining-pearl"],
+  "viewBox": [100, 82],
+  "land": "M14,8L30,3L50,2L66,6L74,16L80,30L86,44L92,58L90,70L80,76L68,72L66,60L70,48L64,38L54,34L44,34L36,40L36,52L40,62L32,70L20,72L12,62L14,48L10,34L12,20Z",
+  "nodes": [
+    {"id":"fight","name":"Fight Area","kind":"town","x":22,"y":64,"locations":[185]},
+    {"id":"s225","name":"Route 225","kind":"route","x":22,"y":50,"locations":[54]},
+    {"id":"survival","name":"Survival Area","kind":"town","x":22,"y":36,"locations":[186]},
+    {"id":"s226","name":"Route 226","kind":"route","x":44,"y":30,"locations":[63],"sea":true},
+    {"id":"s227","name":"Route 227","kind":"route","x":54,"y":20,"locations":[55]},
+    {"id":"stark","name":"Stark Mountain","kind":"landmark","x":54,"y":9,"locations":[16]},
+    {"id":"s228","name":"Route 228","kind":"route","x":72,"y":40,"locations":[56]},
+    {"id":"s229","name":"Route 229","kind":"route","x":78,"y":56,"locations":[57]},
+    {"id":"resort","name":"Resort Area","kind":"town","x":80,"y":68,"locations":[60]},
+    {"id":"s230","name":"Route 230","kind":"route","x":52,"y":60,"locations":[64],"sea":true}
+  ],
+  "edges": [
+    {"from":"fight","to":"s225","style":"land"},
+    {"from":"s225","to":"survival","style":"land"},
+    {"from":"survival","to":"s226","style":"sea"},
+    {"from":"s226","to":"s227","style":"land","elbow":"h"},
+    {"from":"s227","to":"stark","style":"land"},
+    {"from":"s226","to":"s228","style":"land","elbow":"h"},
+    {"from":"s228","to":"s229","style":"land"},
+    {"from":"s229","to":"resort","style":"land"},
+    {"from":"fight","to":"s230","style":"sea"},
+    {"from":"s230","to":"s229","style":"sea","elbow":"h"}
+  ]
+}
